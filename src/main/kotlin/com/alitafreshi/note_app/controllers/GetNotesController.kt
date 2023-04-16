@@ -1,5 +1,6 @@
 package com.alitafreshi.note_app.controllers
 
+import com.alitafreshi.note_app.model.Note
 import com.alitafreshi.note_app.service.NoteService
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
@@ -13,6 +14,6 @@ class NoteController(private val noteService: NoteService) {
     val logger = LoggerFactory.getLogger(this::class.java)
 
     @GetMapping("/userId")
-    fun getAllNotes(): String = noteService.getAllNotes()
+    fun getAllNotes(): List<Note> = noteService.getAllNotes()
 
 }

@@ -9,7 +9,8 @@ import jakarta.persistence.*
 data class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long,
+        @Column(name = "user_id")
+        val userId: Long,
 
         @Column(name = "phone_number", nullable = false)
         val phoneNumber: String
