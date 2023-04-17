@@ -1,8 +1,9 @@
 package com.alitafreshi.note_app.user.service
 
+import com.alitafreshi.note_app.exception_manager.model.BaseAppException
 import com.alitafreshi.note_app.user.model.User
 import com.alitafreshi.note_app.user.repository.UserRepository
-import com.sun.nio.sctp.IllegalReceiveException
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 
 @Service
@@ -13,7 +14,7 @@ class UserService(private val userRepository: UserRepository) {
             userRepository.save(user)
             return
         }
-        throw IllegalStateException("user is exist with this phone number")
+        throw BaseAppException(errorCode = HttpStatus.NOT_ACCEPTABLE, errorMessage = "user is exist with this phone number")
     }
 
 }
