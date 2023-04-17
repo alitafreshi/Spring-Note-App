@@ -1,4 +1,4 @@
-package com.alitafreshi.note_app.model
+package com.alitafreshi.note_app.user.model
 
 import jakarta.persistence.*
 

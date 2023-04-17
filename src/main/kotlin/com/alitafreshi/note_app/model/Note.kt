@@ -1,5 +1,6 @@
 package com.alitafreshi.note_app.model
 
+import com.alitafreshi.note_app.user.model.User
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
