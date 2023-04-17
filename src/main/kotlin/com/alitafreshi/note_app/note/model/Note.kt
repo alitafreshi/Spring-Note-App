@@ -1,4 +1,4 @@
-package com.alitafreshi.note_app.model
+package com.alitafreshi.note_app.note.model
 
 import com.alitafreshi.note_app.user.model.User
 import jakarta.persistence.CascadeType

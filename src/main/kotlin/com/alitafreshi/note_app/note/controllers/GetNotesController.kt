@@ -1,7 +1,7 @@
-package com.alitafreshi.note_app.controllers
+package com.alitafreshi.note_app.note.controllers
 
-import com.alitafreshi.note_app.model.Note
-import com.alitafreshi.note_app.service.NoteService
+import com.alitafreshi.note_app.note.model.Note
+import com.alitafreshi.note_app.note.service.NoteService
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

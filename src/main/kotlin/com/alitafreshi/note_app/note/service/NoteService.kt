@@ -1,7 +1,7 @@
-package com.alitafreshi.note_app.service
+package com.alitafreshi.note_app.note.service
 
-import com.alitafreshi.note_app.model.Note
-import com.alitafreshi.note_app.repository.NoteRepository
+import com.alitafreshi.note_app.note.model.Note
+import com.alitafreshi.note_app.note.repository.NoteRepository
 import org.springframework.stereotype.Service
 
 @Service
