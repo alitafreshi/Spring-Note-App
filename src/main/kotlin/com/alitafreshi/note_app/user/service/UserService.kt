@@ -11,14 +11,13 @@ import org.springframework.stereotype.Service
 @Service
 class UserService(private val userRepository: UserRepository) {
 
-    /* fun createUserIfNotExists(user: User) {
-         if (!userRepository.existsByPhoneNumber(user.phoneNumber)) {
-             userRepository.save(user)
-             return
-         }
-         throw BaseAppException(errorCode = HttpStatus.NOT_ACCEPTABLE, errorMessage = "user is exist with this phone number")
-     }*/
+    fun getUserInfo(phoneNumber: String): BaseResponse<User> {
+        if (userRepository.existsByPhoneNumber(phoneNumber)) {
+            return BaseResponse(response = userRepository.findByPhoneNumber(phoneNumber = phoneNumber), status = ResponseStatus(code = HttpStatus.OK.value(), description = HttpStatus.OK.name))
+        }
+        throw BaseAppException(errorCode = HttpStatus.NOT_FOUND, errorMessage = "no user found with this phone number")
 
+    }
 
     fun createUserIfNotExists(user: User): BaseResponse<User> {
         if (!userRepository.existsByPhoneNumber(user.phoneNumber)) {
@@ -26,6 +25,13 @@ class UserService(private val userRepository: UserRepository) {
             return BaseResponse(response = user, status = ResponseStatus(code = HttpStatus.CREATED.value(), description = HttpStatus.CREATED.name))
         }
         throw BaseAppException(errorCode = HttpStatus.NOT_ACCEPTABLE, errorMessage = "user is exist with this phone number")
+    }
+
+    fun removeUser(phoneNumber: String): BaseResponse<String> {
+        if (userRepository.deleteByPhoneNumber(phoneNumber) > 0)
+            return BaseResponse(response = "user deleted successfully", status = ResponseStatus(code = HttpStatus.OK.value(), description = HttpStatus.OK.name))
+
+        throw BaseAppException(errorCode = HttpStatus.NOT_FOUND, errorMessage = "no user found with this phone number")
     }
 
 }

@@ -1,15 +1,8 @@
 package com.alitafreshi.note_app.note.model
 
 import com.alitafreshi.note_app.user.model.User
-import jakarta.persistence.CascadeType
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.JoinColumn
-import jakarta.persistence.ManyToOne
-import jakarta.persistence.Table
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import jakarta.persistence.*
 
 @Table(name = "tbl_note")
 @Entity
@@ -28,10 +21,8 @@ data class Note(
         @Column(nullable = false, columnDefinition = "TEXT")
         val date: String,
 
-        @Column(nullable = false, columnDefinition = "TEXT")
-        val color: Int,
-
-        @ManyToOne(cascade = [CascadeType.ALL])
+        @ManyToOne
         @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
+        @JsonIgnoreProperties("notes")
         val user: User
 )
