@@ -56,3 +56,9 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.named<Jar>("jar") {
+    manifest {
+        attributes["Main-Class"] = "com.alitafreshi.NoteAppApplication"
+    }
+}
