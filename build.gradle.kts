@@ -59,6 +59,6 @@ tasks.withType<Test> {
 
 tasks.named<Jar>("jar") {
     manifest {
-        attributes["Main-Class"] = "com.alitafreshi.NoteAppApplication"
+        attributes["Main-Class"] = "com.alitafreshi.note_app.NoteAppApplication"
     }
 }
