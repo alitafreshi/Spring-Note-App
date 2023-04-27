@@ -36,6 +36,9 @@ dependencies {
 		}
 	}
 
+    implementation ("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
+
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("org.postgresql:postgresql")
