@@ -7,8 +7,12 @@ import org.springframework.boot.runApplication
 
 @SpringBootApplication
 @OpenAPIDefinition(info = Info(title = "Note App Apis", description = "An Collection of apis for note app", version = "1.0"))
-class NoteAppApplication
+class NoteAppApplication {
 
-fun main(args: Array<String>) {
-	runApplication<NoteAppApplication>(*args)
+	companion object {
+		@JvmStatic
+		fun main(args: Array<String>) {
+			runApplication<NoteAppApplication>(*args)
+		}
+	}
 }
