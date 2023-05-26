@@ -17,7 +17,7 @@ class GlobalExceptionHandler {
     @ResponseStatus
     @ExceptionHandler(BaseAppException::class)
     fun handleGlobalException(baseAppException: BaseAppException): ResponseEntity<BaseErrorResponse> {
-        val errorResponse = BaseErrorResponse(requestStatus = RequestStatus(code = baseAppException.errorCode.value(), description = baseAppException.errorCode.reasonPhrase), errorMessage = baseAppException.errorMessage)
+        val errorResponse = BaseErrorResponse(status = RequestStatus(code = baseAppException.errorCode.value(), description = baseAppException.errorCode.reasonPhrase), errorMessage = baseAppException.errorMessage)
         return ResponseEntity(errorResponse, baseAppException.errorCode)
     }
 
@@ -26,7 +26,7 @@ class GlobalExceptionHandler {
     @ExceptionHandler(Exception::class)
     fun handleUnExpectedException(unExpectedException: Exception): ResponseEntity<BaseErrorResponse> {
         val requestStatus = HttpStatus.INTERNAL_SERVER_ERROR
-        val errorResponse = BaseErrorResponse(requestStatus = RequestStatus(code = requestStatus.value(), description = requestStatus.reasonPhrase), errorMessage = unExpectedException.localizedMessage)
+        val errorResponse = BaseErrorResponse(status = RequestStatus(code = requestStatus.value(), description = requestStatus.reasonPhrase), errorMessage = unExpectedException.localizedMessage)
         return ResponseEntity(errorResponse, requestStatus)
     }
 }
